@@ -60,7 +60,7 @@ const usePaymentHook = () => {
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            'X-CSRFToken': cookie.get('csrftoken'),
+            Credential:'include'
           },
         }
         );

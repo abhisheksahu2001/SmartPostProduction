@@ -20,7 +20,7 @@ const url = import.meta.env.VITE_URL+ 'accounts/' + import.meta.env.VITE_REGISTE
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json',
-            'X-CSRFToken': cookies.get('csrftoken'),
+            credentials:'include'
           },
         })
         .then((res) => {

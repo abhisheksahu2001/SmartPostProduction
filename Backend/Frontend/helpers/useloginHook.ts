@@ -7,8 +7,10 @@ import fetchUser from './useFetchUser';
 // import { user } from '../src/features/auth/userSlice';
 import { login } from '../src/features/auth/loginSlice';
 import useCheckAuth from './useCheckAuth';
+import { Dayjs } from 'dayjs';
 
 interface ResponseData {
+  last_login:string;
   status: number;
   session: string;
   message: string;
@@ -79,7 +81,16 @@ const UseLoginHook = () => {
   useEffect(() => {
     if (userData) {
       localStorage.setItem('user', JSON.stringify(userData));
+    
+      const lastLoginTime = new Date(userData.last_login);
+
+      const expirationTime = new Date(lastLoginTime.getTime() + 604800 * 1000);
+
+      const maxAge : number = Math.floor((expirationTime.getTime() - new Date().getTime()) / 1000);
+      cookie.set('clientsessionid' , userData.session , {maxAge : maxAge} )
     }
+
+
   }, [userData]);
 
   return {

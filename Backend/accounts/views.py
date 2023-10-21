@@ -31,7 +31,7 @@ def get_csrf(request):
 def session_view(request):
     session_data = request.session.session_key
     session_exp = dict(request.session)
-    print(session_exp)
+    # print(session_exp)
     return JsonResponse({'session' : session_data  , 'session_exp' : session_exp })
     # if not request.user.is_authenticated:
     #     response = JsonResponse({'isAuthenticated': False})
@@ -205,6 +205,7 @@ class UserLoginViewSet(viewsets.ViewSet):
                     'status' : status.HTTP_200_OK,
                     'session':session_id,
                     'user':request.user.id,
+                    'last_login':request.user.last_login,
                     'message':'Welcome Back'
                 })
             

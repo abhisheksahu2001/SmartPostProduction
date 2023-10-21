@@ -13,16 +13,13 @@ export default function DropDown() {
   const dispatch = useDispatch();
   const cookie = new Cookies();
   const handleLogout = () => {
-    const csrf = cookie.get('csrftoken');
-
-    cookie.remove('sessionid');
-    cookie.remove('csrftoken');
+    cookie.remove('clientsessionid');
     axios
       .post('/accounts/logout/', {
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
-          'X-CSRFToken': csrf,
+          credentials: 'include',
         },
       })
       .then((res) => navigate('/'))

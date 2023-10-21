@@ -13,7 +13,7 @@ function PrivateRoute() {
     setUserData();
   }
   const cookie = new Cookies();
-  const session = cookie.get('sessionid');
+  const session = cookie.get('clientsessionid');
   return session ? <Outlet /> : <Navigate to="./login" />;
 }
 

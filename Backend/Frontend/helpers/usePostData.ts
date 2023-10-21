@@ -9,7 +9,7 @@ export const usePostData = () => {
   const FBPostApi = async (data: any) => {
     return axios.post('/facebook-access/facebook-post/', data, {
       headers: {
-        'X-CSRFToken': cookies.get('csrftoken'),
+        Credential: 'include'
       },
     });
   };

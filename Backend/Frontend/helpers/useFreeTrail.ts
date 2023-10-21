@@ -12,7 +12,7 @@ const url = import.meta.env.VITE_URL+ 'payments/free-trial/';
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        'X-CSRFToken': cookie.get('csrftoken'),
+        credentials:'include'
       },
     });
   };

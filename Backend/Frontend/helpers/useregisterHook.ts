@@ -25,7 +25,7 @@ const CSRF_URL = import.meta.env.VITE_URL+ 'accounts/' + + import.meta.env.VITE_
   const headers = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
-    'X-CSRFToken': cookies.get('csrftoken'),
+    Credential: 'include'
   };
 
   const signUpHook = async (
@@ -35,7 +35,7 @@ const CSRF_URL = import.meta.env.VITE_URL+ 'accounts/' + + import.meta.env.VITE_
     password: string,
     checkPass: string
   ) => {
-    if (cookies.get('csrftoken')) {
+    if (cookies.get('clientsessionid')) {
       try {
         const response = await axios.post(
           url,
