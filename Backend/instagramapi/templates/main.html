@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Callback</h1>
+    <h4>GET DATA</h4><i>{{get_request}}</i>
+    <h4>Code</h4><i>{{code}}</i>
+    <h4>User Info</h4><i>{{userInfo}}</i>
+    <h4>CH Info</h4><i>{{ch_data}}</i>
+    <h4>User Logged Info</h4><i>{{user_data}}</i>
+    <h4>Pages</h4><i>{{pages_data}}</i>
+    {% for data in pages_data %}
+    <h4>Pages Info [{{data.name}}]</h4><i>Name:<b>{{data.name}}</b></i><br><i>ID:<b>{{data.id}}</b></i><br><i>Page Access Token:<b>{{data.access_token}}</b></i>
+    {% endfor %}
+    <a href="https://localhost:8000">back</a>
+</body>
+</html>

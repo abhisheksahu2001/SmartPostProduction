@@ -1,0 +1,78 @@
+CSRF API:-
+	URL: https://127.0.0.1:8000/accounts/csrf/
+	Request Type: GET
+	mode: "cors",
+      cache: "no-cache", 
+      credentials: "include", 
+      headers: {
+        "Access-Control-Allow-Credentials": "true",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*",
+        "Accept": "application/json",
+      },
+	Response: CSRF TOKEN
+
+
+SESSION API:-
+	URL: https://127.0.0.1:8000/accounts/session/
+	Request Type: GET
+	credentials: "include", 
+      headers: {
+        "Access-Control-Allow-Credentials": "true",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin":"*",
+        "Accept": "application/json",
+      }, 
+	Response: JsonResponse({'isAuthenticated': False}) // JsonResponse({'isAuthenticated': True})
+
+
+REGISTER API:-
+	URL: https://127.0.0.1:8000/accounts/users/
+	Request Type: POST
+	headers: {
+        "Accept": "application/json",
+    	  "Content-Type": "application/json",
+    	  "X-CSRFToken": cookies.get("csrftoken"),
+      },
+	Data: Email, Name, Password
+	Response: Success/Fail
+
+
+LOGIN API:- 
+	URL: https://127.0.0.1:8000/accounts/login/
+	Request Type: POST
+	headers: {
+        "Accept": "application/json",
+    	  "Content-Type": "application/json",
+    	  "X-CSRFToken": cookies.get("csrftoken"),
+      },
+	Data: Email, Password
+	Response: Success/Fail
+	
+LOGOUT API:-
+	URL: https://127.0.0.1:8000/accounts/logout/
+	Request Type: POST
+	headers: {
+    	  "X-CSRFToken": cookies.get("csrftoken"), **Important
+      },
+	Response: Success/Fail 
+
+
+PLAN ACTIVATION:-
+	URL: http://127.0.0.1:8000/accounts/activate/
+	Request Type: POST
+	headers: {
+        "Accept": "application/json",
+    	  "Content-Type": "application/json",
+    	  "X-CSRFToken": cookies.get("csrftoken"), **Important
+      },
+	Data: MainDataId, PlanID
+	Response: Success/Fail
+
+
+
+
+
+
+
+
